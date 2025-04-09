@@ -3,7 +3,6 @@ package com.dimas.graphqlapp.presentation
 import androidx.lifecycle.ViewModel
 import com.dimas.graphqlapp.domain.GetCountriesUseCase
 import com.dimas.graphqlapp.domain.GetCountryUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
@@ -11,7 +10,6 @@ import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
-@HiltViewModel
 class CountriesViewModel @Inject constructor(
     private val getCountriesUseCase: GetCountriesUseCase,
     private val getCountryUseCase: GetCountryUseCase,

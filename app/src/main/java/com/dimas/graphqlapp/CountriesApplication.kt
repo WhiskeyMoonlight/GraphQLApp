@@ -1,7 +1,8 @@
 package com.dimas.graphqlapp
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.dimas.graphqlapp.di.DaggerAppComponent
 
-@HiltAndroidApp
-class CountriesApplication : Application()
+class CountriesApplication : Application() {
+    val appComponent = DaggerAppComponent.create()
+}

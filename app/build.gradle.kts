@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.apollo.graphql)
 
-    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp") version "2.1.10-1.0.31"
 }
 
@@ -71,8 +70,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.graphql)
-    implementation(libs.dagger.hilt)
-    ksp(libs.dagger.hilt.compiler)
+
+    implementation(libs.dagger2)
+    ksp(libs.dagger.compiler)
 
     implementation(libs.orbit.core)
     implementation(libs.orbit.compose)

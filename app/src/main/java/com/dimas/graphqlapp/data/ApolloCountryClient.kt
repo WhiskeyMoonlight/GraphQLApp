@@ -6,8 +6,9 @@ import com.dimas.CountryQuery
 import com.dimas.graphqlapp.domain.CountryClient
 import com.dimas.graphqlapp.domain.DetailedCountry
 import com.dimas.graphqlapp.domain.SimpleCountry
+import javax.inject.Inject
 
-class ApolloCountryClient(
+class ApolloCountryClient @Inject constructor(
     private val apolloClient: ApolloClient
 ) : CountryClient {
     override suspend fun getCountries(): List<SimpleCountry> {

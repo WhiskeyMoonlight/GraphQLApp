@@ -1,6 +1,8 @@
 package com.dimas.graphqlapp.domain
 
-class GetCountriesUseCase(
+import javax.inject.Inject
+
+class GetCountriesUseCase @Inject constructor(
     private val countryClient: CountryClient
 ) {
     suspend fun invoke(): List<SimpleCountry> {

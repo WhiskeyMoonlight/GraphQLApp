@@ -8,25 +8,28 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
 import com.dimas.graphqlapp.presentation.CountriesScreen
 import com.dimas.graphqlapp.presentation.CountriesViewModel
 import com.dimas.graphqlapp.ui.theme.GraphQLAppTheme
-import dagger.hilt.android.AndroidEntryPoint
 import org.orbitmvi.orbit.compose.collectAsState
+import javax.inject.Inject
 
-@AndroidEntryPoint
+
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        (application as CountriesApplication).appComponent.inject(this)
         setContent {
             GraphQLAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val viewModel by viewModels<CountriesViewModel>()
+                    val viewModel by viewModels<CountriesViewModel> { viewModelFactory }
                     val state = viewModel.collectAsState().value
                     CountriesScreen(
                         state = state,
